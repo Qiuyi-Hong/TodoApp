@@ -17,7 +17,9 @@ except Exception as e:
 
 
 SessionLocal: sessionmaker[Session] = sessionmaker(
-    autocommit=False, autoflush=False, bind=engine # type: ignore
+    autocommit=False,
+    autoflush=False,
+    bind=engine,  # type: ignore
 )
 
 Base = declarative_base()
