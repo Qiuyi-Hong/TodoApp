@@ -9,17 +9,12 @@ from sqlalchemy.orm.session import Session
 load_dotenv()
 
 
-try:
-    SQLALCHEMY_DATABASE_URL = os.getenv("postgreSQLExternalAddress")
-    engine: Engine = create_engine(SQLALCHEMY_DATABASE_URL)  # type: ignore
-except Exception as e:
-    print(f"Error creating engine: {e}")
+SQLALCHEMY_DATABASE_URL = os.getenv("postgreSQLExternalAddress")
+engine: Engine = create_engine(SQLALCHEMY_DATABASE_URL)  # type: ignore
 
 
 SessionLocal: sessionmaker[Session] = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine,  # type: ignore
+    autocommit=False, autoflush=False, bind=engine
 )
 
 Base = declarative_base()
